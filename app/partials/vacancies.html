@@ -1,0 +1,49 @@
+<div class="jumbotron">
+  <img class="logo" ng-src="img/logo.png" />
+  <h2>Работай из дома</h2>
+  <p>Надоело сидеть в офисе? Тратишь много времени на дорогу? Работай из дома!</p>
+  <div class="clear"><!--nothing--></div>
+</div>
+<input type="text" class="form-control" ng-model="nameFilter" placeholder="Search..." />
+<div class="table-responsive">
+    <table class="table table-hover">
+        <thead>
+        <tr><th colspan="4"><h3 class="specializations">Информационные технологии</h3></th></tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="vacancy in vacanciesList | filter: searchFilter">
+            <td>{{$index + 1}}</td>
+            <td>
+                <span>{{vacancy.employer.name}}</span>
+            </td>
+            <td>
+                <a href="#/vacancy/{{vacancy.id}}">
+                    {{vacancy.name}}
+                </a>
+            </td>
+            <td>
+                <span>{{vacancy.created_at | date:'d MMMM'}}</span>
+            </td>
+            <td>{{driver.Constructors[0].name}}</td>
+            <td>{{driver.points}}</td>
+        </tr>
+        <!--<tr ng-repeat="vacancy in vacanciesList2 | filter: searchFilter">
+            <td>{{$index + 1}}</td>
+            <td>
+                <span>{{vacancy.employer.name}}</span>
+            </td>
+            <td>
+                <a href="#/vacancy/{{vacancy.id}}">
+                    {{vacancy.name}}
+                </a>
+            </td>
+            <td>
+                <span>{{vacancy.created_at | date:'d MMMM'}}</span>
+            </td>
+            <td>{{driver.Constructors[0].name}}</td>
+            <td>{{driver.points}}</td>
+        </tr>
+        -->
+        </tbody>
+    </table>
+</div>

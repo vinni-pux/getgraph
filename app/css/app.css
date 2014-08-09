@@ -1,0 +1,17 @@
+/* app css stylesheet */
+
+.logo {
+  width: 140px;
+  height: auto;
+  float: left;
+  margin-right: 30px;
+  clear: both;
+}
+
+.clear {
+  clear: both;
+}
+
+.specializations {
+  color: #428bca;
+}
