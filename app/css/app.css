@@ -37,7 +37,19 @@
   width: 120px;
   height: 110px;
   display: block;
-  background: url(../img/sprites.png) no-repeat -4px -3px;
+  background: url(../img/sprites.png) no-repeat -4px -9px;
+}
+
+.slide.services .thumbnail .circle a.line-chart {
+  background-position: -158px -9px;
+}
+
+.slide.services .thumbnail .circle a.line-chart {
+  background-position: -158px -9px;
+}
+
+.slide.services .thumbnail .circle a.pie-chart {
+  background-position: -308px -9px;
 }
 
 .thumbnail h3 {
