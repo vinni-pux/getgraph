@@ -6,6 +6,8 @@ angular.module('remoteWork', [
 config(['$routeProvider', function($routeProvider) {
   $routeProvider.
 	when("/vacancies", {templateUrl: "partials/vacancies.html", controller: "vacanciesController"}).
-	when("/vacancy/:id", {templateUrl: "partials/vacancy.html", controller: "vacancyController"}).
+	when("/graph/column", {templateUrl: "partials/column.html", controller: "vacancyController"}).
+	when("/graph/line", {templateUrl: "partials/line.html", controller: "vacancyController"}).
+	when("/graph/pie", {templateUrl: "partials/pie.html", controller: "vacancyController"}).
 	otherwise({redirectTo: '/vacancies'});
 }]);
