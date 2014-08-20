@@ -76,3 +76,7 @@
   visibility: visible;
   color: #000;
 }
+
+.table-data {
+  width: 400px;
+}

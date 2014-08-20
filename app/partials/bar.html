@@ -1,56 +1,18 @@
 <section id="main">
   <a href="./#/vacancies"><- Back to vacancies list</a>
   <nav id="secondary" class="main-nav">
-    <div class="logo-picture">
-      <img ng-show="vacancy" ng-src="{{vacancy.employer.logo_urls.240}}" /><br/>
-    </div>
-    <div class="driver-status">
-      <h2> {{vacancy.name }} </h2>  <br/>
-        Posted {{vacancy.created_at | date:'d MMMM'}}
-        <h3>{{vacancy.employer.name}}</h3>
-        <!--<a href="{{driver.Driver.url}}" target="_blank">Biography</a>-->
-        <div ng-bind-html="vacancy.description" class="col-sm-8">{{vacancy.description}}</div>
-        <div class="col-sm-4">
-	        <script type="text/javascript">
-				(function() {
-					console.log(1);
-					if (window.pluso)if (typeof window.pluso.start == "function") return;
-					console.log(2);
-					if (window.ifpluso==undefined) { 
-						console.log(3);
-						window.ifpluso = 1;
-						var d = document, s = d.createElement('script'), g = 'getElementsByTagName';
-						s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
-						s.src = ('https:' == window.location.protocol ? 'https' : 'http')  + '://share.pluso.ru/pluso-like.js';
-						var h=d[g]('body')[0];
-						console.log(4);
-						h.appendChild(s);
-					}
-				})();
-			</script>
-			<div class="pluso" data-background="#ebebeb" data-options="big,square,multiline,vertical,counter,theme=04" data-services="vkontakte,odnoklassniki,facebook,twitter,google,moimir,email,print"></div>
-        </div>
-    </div>
-  </nav>
-<!--
-  <div class="main-content">
-    <table class="result-table">
+    <table class="table table-bordered table-data">
       <thead>
-        <tr><th colspan="5">Formula 1 2013 Results</th></tr>
+        <tr>
+          <th>Category</th>
+          <th>Value</th>
+        </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Round</td> <td>Grand Prix</td> <td>Team</td> <td>Grid</td> <td>Race</td>
+        <tr ng-repeat="item in [0, 1, 2, 3]">
+          <td><input id="category_{{item}}" class="form-control" type="text"/></td>
+          <td><input id="value_{{item}}" class="form-control" type="text"/></td>
         </tr>
-        <tr ng-repeat="race in races">
-          <td>{{race.round}}</td>
-          <td><img  src="img/flags/{{race.Circuit.Location.country}}.png" />{{race.raceName}}</td>
-          <td>{{race.Results[0].Constructor.name}}</td>
-          <td>{{race.Results[0].grid}}</td>
-          <td>{{race.Results[0].position}}</td>
-        </tr>
-      </tbody>
+      </tbody>  
     </table>
-  </div>
-  -->
 </section>
