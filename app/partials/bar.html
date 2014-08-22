@@ -9,10 +9,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="item in [0, 1, 2, 3]">
+        <tr ng-repeat="item in chartCol">
           <td><input id="category_{{item}}" class="form-control" type="text"/></td>
           <td><input id="value_{{item}}" class="form-control" type="text"/></td>
         </tr>
-      </tbody>  
+      </tbody>
     </table>
+    <div id="container"></div>
+    <!--<canvas id="myCanvas" width="300" height="300"></canvas>-->
 </section>
