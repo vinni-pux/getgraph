@@ -32,6 +32,13 @@ angular.module('remoteWork.controllers', ['ngSanitize']).
     $scope.races = [];
     $scope.vacancy = null;
     $scope.chartCol = [0, 1, 2, 3];
+    $scope.onlyNumbers = /^\d+$/;
+    $scope.dataSample = [
+      {"id" : 0, "cat": "One", "val": 20},
+      {"id" : 1, "cat": "Two", "val": 10},
+      {"id" : 2, "cat": "Three", "val": -30},
+      {"id" : 3, "cat": "Four", "val": 40},
+    ];
     var chart = new Chart();
     chart.drawBar();
     ergastAPIservice.getVacancyDetails($scope.id).success(function (response) {
@@ -43,6 +50,12 @@ angular.module('remoteWork.controllers', ['ngSanitize']).
     $scope.getGraph = function () {
         //Digging into the response to get the relevant data
         $scope.vacanciesList = response.items;
+    }; 
+    
+    $scope.updateGraph = function (id) {
+      console.log(id);
+        //Digging into the response to get the relevant data
+        //$scope.vacanciesList = response.items;
     }; 
 
 

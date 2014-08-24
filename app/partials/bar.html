@@ -9,9 +9,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr ng-repeat="item in chartCol">
-          <td><input id="category_{{item}}" class="form-control" type="text"/></td>
-          <td><input id="value_{{item}}" class="form-control" type="text"/></td>
+        <tr ng-repeat="item in dataSample">
+          <td><input id="category_{{item.id}}" class="form-control" type="text" ng-model="item.cat" ng-change="updateGraph($index)"/></td>
+          <td><input id="value_{{item.id}}" class="form-control" type="text" ng-model="item.val" ng-change="updateGraph($index)"/></td>
         </tr>
       </tbody>
     </table>
