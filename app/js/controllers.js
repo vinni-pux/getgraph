@@ -40,7 +40,7 @@ angular.module('remoteWork.controllers', ['ngSanitize']).
       {"id" : 3, "cat": "Four", "val": 40},
     ];
     var chart = new Chart();
-    chart.drawBar();
+    chart.drawBar($scope.dataSample);
     ergastAPIservice.getVacancyDetails($scope.id).success(function (response) {
         console.log(response);
         $scope.vacancy = response; 
@@ -54,6 +54,10 @@ angular.module('remoteWork.controllers', ['ngSanitize']).
     
     $scope.updateGraph = function (id) {
       console.log(id);
+      console.log($scope.dataSample);
+      
+      chart.clear();
+      chart.drawBar($scope.dataSample);
         //Digging into the response to get the relevant data
         //$scope.vacanciesList = response.items;
     }; 
