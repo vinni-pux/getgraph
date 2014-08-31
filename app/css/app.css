@@ -79,8 +79,18 @@
 
 .table-data {
   width: 400px;
+  
+}
+#container-data {
+  float: left;
 }
 
-.kineticjs-content {
+#container-graph {
   background: #cbe0c9;
+  float: left;
+  margin-left: 40px;
+}
+
+.btn {
+  clear: both;
 }

@@ -1,20 +1,23 @@
 <section id="main">
   <a href="./#/vacancies"><- Back to vacancies list</a>
   <nav id="secondary" class="main-nav">
-    <table class="table table-bordered table-data">
-      <thead>
-        <tr>
-          <th>Category</th>
-          <th>Value</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="item in dataSample">
-          <td><input id="category_{{item.id}}" class="form-control" type="text" ng-model="item.cat" ng-change="updateGraph($index)"/></td>
-          <td><input id="value_{{item.id}}" class="form-control" type="text" ng-model="item.val" ng-change="updateGraph($index)"/></td>
-        </tr>
-      </tbody>
-    </table>
-    <div id="container"></div>
+    <div id="container-data">
+      <table class="table table-bordered table-data">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="item in dataSample">
+            <td><input class="form-control" type="text" ng-model="item.cat" ng-change="updateGraph()"/></td>
+            <td><input class="form-control" type="text" ng-model="item.val" ng-change="updateGraph()"/></td>
+          </tr>
+        </tbody>
+      </table>
+      <button type="button" class="btn btn-primary" ng-click="addData()">Add data</button>
+    </div>
+    <div id="container-graph"></div>
     <!--<canvas id="myCanvas" width="300" height="300"></canvas>-->
 </section>
