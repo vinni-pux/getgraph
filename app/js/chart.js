@@ -47,6 +47,31 @@
             min = 0,
             rangeY,
             rangeX;
+            
+            
+        var customShape = new Kinetic.Shape({
+          x: 5,
+          y: 20,
+          fill: 'white',
+          stroke: '#7cb5ec',
+          strokeWidth: 2,
+          strokeScaleEnabled: false,
+  // a Kinetic.Canvas renderer is passed into the drawFunc function
+          drawFunc: function(context) {
+            context.beginPath();
+            context.moveTo(10,10);
+            context.lineTo(70,10);
+            context.lineTo(70,35);
+            context.lineTo(43,35);
+            context.lineTo(40,40);
+            context.lineTo(37,35);
+            context.lineTo(10,35);
+            context.lineTo(10,10);
+            context.stroke();
+            context.fillStrokeShape(this);
+          }
+        });
+        
         
         for (var i = 0; i < len; i++) {
           var bar = data[i];
@@ -69,6 +94,8 @@
           
           rect.on("mouseover", function() {
             this.fill("#95ceff");
+            customShape.x(this.x() + this.width()/2 - 40/self.layer.scaleX());
+            customShape.y(this.y() + this.height() - 45/self.layer.scaleY());
             self.layer.batchDraw();
           });
           
@@ -83,30 +110,15 @@
         rangeY = Math.abs(min - max);
         rangeX = i*20;
         
-        var customShape = new Kinetic.Shape({
-          x: 5,
-          y: 10,
-          fill: 'red',
-  // a Kinetic.Canvas renderer is passed into the drawFunc function
-          drawFunc: function(context) {
-            context.beginPath();
-            context.moveTo(10,10);
-            context.lineTo(40,10);
-            context.lineTo(40,20);
-            context.lineTo(28,20);
-            context.lineTo(25,23);
-            context.lineTo(22,20);
-            context.lineTo(10,20);
-            context.lineTo(10,10);
-            context.stroke();
-            context.fillStrokeShape(this);
-          }
-        });
-        self.layer.add(customShape);
+
         //console.log(self.layer.height());
         self.layer.scaleY(-0.8*self.layer.height()/rangeY);
         self.layer.scaleX(0.8*self.layer.width()/rangeX);
-        console.log(self.layer.scaleX());
+        customShape.scaleX(1/self.layer.scaleX());
+        customShape.scaleY(1/self.layer.scaleY());
+
+        
+        self.layer.add(customShape);
         self.layer.batchDraw();
       },
       
