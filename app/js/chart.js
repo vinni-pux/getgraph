@@ -94,9 +94,22 @@
           
           rect.on("mouseover", function() {
             this.fill("#95ceff");
-            customShape.x(this.x() + this.width()/2 - 40/self.layer.scaleX());
-            customShape.y(this.y() + this.height() - 45/self.layer.scaleY());
-            self.layer.batchDraw();
+                  var tween = new Kinetic.Tween({
+        node: customShape, 
+        duration: 0.3,
+        x: this.x() + this.width()/2 - 40/self.layer.scaleX(),
+        y: this.y() + this.height() - 45/self.layer.scaleY(),
+      });
+            
+            /*customShape.transitionTo({
+              x: this.x() + this.width()/2 - 40/self.layer.scaleX(),
+              y: this.y() + this.height() - 45/self.layer.scaleY(),
+              duration: 1
+            });*/
+            //customShape.x(this.x() + this.width()/2 - 40/self.layer.scaleX());
+            //customShape.y(this.y() + this.height() - 45/self.layer.scaleY());
+            //self.layer.batchDraw();
+            tween.play();
           });
           
           rect.on("mouseout", function() {
