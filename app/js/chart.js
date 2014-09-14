@@ -33,14 +33,6 @@
       },
       
       drawBar: function (data) {
-        //this.layer;
-        /*var data = [
-          {"cat": "One", "val": 20},
-          {"cat": "Two", "val": 10},
-          {"cat": "Three", "val": -30},
-          {"cat": "Four", "val": 40},
-          
-        ];*/
         var self = this;
         var len = data.length, 
             max = 0, 
@@ -72,6 +64,25 @@
           }
         });
         
+        var textVal = new Kinetic.Text({
+          x: 10,
+          y: 12,
+          text: "text",
+          fill: "black",
+          fontSize: 6
+        });
+        
+        var hintGr = new Kinetic.Group({
+          scaleX: 1/this.layer.scaleX(),
+          scaleY: 1/this.layer.scaleY()
+        });
+          
+        
+        
+        hintGr.add(customShape);
+        hintGr.add(textVal);
+        self.layer.add(hintGr);
+        
         
         for (var i = 0; i < len; i++) {
           var bar = data[i];
@@ -94,21 +105,26 @@
           
           rect.on("mouseover", function() {
             this.fill("#95ceff");
-                  var tween = new Kinetic.Tween({
-        node: customShape, 
-        duration: 0.3,
-        x: this.x() + this.width()/2 - 40/self.layer.scaleX(),
-        y: this.y() + this.height() - 45/self.layer.scaleY(),
-      });
+            var dy = 35;
+            if (this.height() < 0) {
+              hintGr.scaleY(-Math.abs(hintGr.scaleY()));
+              hintGr.offsetY(22);
+              dy = 55;
+            } else {
+              hintGr.scaleY(Math.abs(hintGr.scaleY()));
+              hintGr.offsetY(0);
+            }
+            textVal.text(this.height());
             
-            /*customShape.transitionTo({
-              x: this.x() + this.width()/2 - 40/self.layer.scaleX(),
-              y: this.y() + this.height() - 45/self.layer.scaleY(),
-              duration: 1
-            });*/
-            //customShape.x(this.x() + this.width()/2 - 40/self.layer.scaleX());
-            //customShape.y(this.y() + this.height() - 45/self.layer.scaleY());
-            //self.layer.batchDraw();
+            
+            var tween = new Kinetic.Tween({
+              node: hintGr, 
+              duration: 0.3,
+              
+              x: this.x() + this.width()/2 - 60/self.layer.scaleX(),
+              y: this.y() + this.height() + dy/self.layer.scaleY(),
+            });
+            
             tween.play();
           });
           
@@ -125,13 +141,13 @@
         
 
         //console.log(self.layer.height());
-        self.layer.scaleY(-0.8*self.layer.height()/rangeY);
+        self.layer.scaleY(-0.7*self.layer.height()/rangeY);
         self.layer.scaleX(0.8*self.layer.width()/rangeX);
         customShape.scaleX(1/self.layer.scaleX());
         customShape.scaleY(1/self.layer.scaleY());
 
         
-        self.layer.add(customShape);
+        //self.layer.add(customShape);
         self.layer.batchDraw();
       },
       
